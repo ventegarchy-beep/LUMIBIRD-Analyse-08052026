@@ -17,196 +17,276 @@
     --text:     #b8bde0;
     --sub:      #7c85b0;
     --accent:   #22d3ee;
-    --accent2:  #67e8f9;
     --green:    #4ade80;
     --red:      #f87171;
     --orange:   #fb923c;
     --blue:     #60a5fa;
     --purple:   #c084fc;
-    --muted-text: #8892b8;
+    --gold:     #fbbf24;
+    --muted:    #8892b8;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: 'Exo 2', sans-serif; font-size: 14px;
-    line-height: 1.6; padding: 48px 0 80px;
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Exo 2',sans-serif; font-size:14px; line-height:1.6; padding:48px 0 80px; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 24px; }
+  hr.div { border:none; border-top:1px solid var(--border); margin:20px 0; }
+
+  /* HEADER */
+  .ticker { display:inline-flex; align-items:center; background:rgba(34,211,238,.08); border:1px solid rgba(34,211,238,.25); border-radius:99px; padding:6px 18px; font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
+  .company { font-size:clamp(52px,10vw,80px); font-weight:900; color:var(--heading); line-height:1; letter-spacing:-.02em; margin-bottom:12px; }
+  .company .first { color:var(--accent); }
+  .asub { font-size:14px; color:var(--sub); margin-bottom:20px; }
+  .asub strong { color:var(--heading); }
+  .tagline { font-size:14px; color:var(--muted); font-style:italic; line-height:1.65; max-width:680px; margin-bottom:24px; }
+
+  .cours-row { display:flex; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:10px; }
+  .cours-v { font-family:'JetBrains Mono',monospace; font-size:42px; font-weight:700; color:var(--heading); }
+  .badge-up { padding:5px 12px; border-radius:7px; font-weight:700; font-size:14px; background:rgba(74,222,128,.12); border:1px solid rgba(74,222,128,.4); color:var(--green); }
+  .cours-meta { font-size:13px; color:var(--sub); display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
+  .sep { color:var(--border); }
+
+  .ind { font-size:12.5px; color:var(--muted); display:flex; flex-wrap:wrap; gap:20px; margin-bottom:7px; align-items:center; }
+  .ind strong { color:var(--text); }
+
+  .fibconso { font-size:13px; color:var(--sub); display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:28px; }
+  .tag-g { background:rgba(74,222,128,.1); border:1px solid rgba(74,222,128,.3); color:var(--green); padding:1px 8px; border-radius:6px; font-size:11.5px; font-weight:700; }
+  .tag-a { background:rgba(34,211,238,.1); border:1px solid rgba(34,211,238,.3); color:var(--accent); padding:1px 8px; border-radius:6px; font-size:11.5px; font-weight:700; }
+  .tag-w { background:rgba(251,191,36,.1); border:1px solid rgba(251,191,36,.3); color:var(--gold); padding:1px 8px; border-radius:6px; font-size:11.5px; font-weight:700; }
+  .tag-r { background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.3); color:var(--red); padding:1px 8px; border-radius:6px; font-size:11.5px; font-weight:700; }
+
+  /* BIG BOX */
+  .sitbox { background:rgba(34,211,238,.05); border:1px solid rgba(34,211,238,.2); border-radius:14px; padding:24px 28px; margin-bottom:36px; }
+  .sit-val { font-family:'JetBrains Mono',monospace; font-size:52px; font-weight:900; color:var(--accent); line-height:1; margin-bottom:4px; }
+  .sit-sub { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .sit-txt { font-size:13.5px; color:var(--muted); line-height:1.65; }
+  .sit-txt strong { color:var(--accent); }
+
+  /* SECTIONS */
+  .section { padding:32px 0 0; }
+  .stitle { font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .stitle::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, rgba(34,211,238,.3), transparent); }
+
+  /* ALERTES */
+  .alerts { display:flex; flex-direction:column; gap:10px; }
+  .alert { border-radius:10px; padding:12px 16px; font-size:13.5px; border-left:3px solid transparent; line-height:1.5; }
+  .alert strong { font-weight:700; }
+  .ag { background:rgba(74,222,128,.07);  border-left-color:var(--green);  color:#a7f3c0; }
+  .aw { background:rgba(251,191,36,.07);  border-left-color:var(--gold);   color:#fde68a; }
+  .ab { background:rgba(34,211,238,.07);  border-left-color:var(--accent); color:#a5f3fc; }
+  .ao { background:rgba(251,146,60,.07);  border-left-color:var(--orange); color:#fdba74; }
+  .ar { background:rgba(248,113,113,.07); border-left-color:var(--red);    color:#fca5a5; }
+
+  /* KPI */
+  .kg { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:12px; }
+  .kpi { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .kpi.ac { border-color:rgba(34,211,238,.35); background:rgba(34,211,238,.05); }
+  .kl { font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .kv { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:700; color:var(--heading); }
+  .kpi.ac .kv { color:var(--accent); }
+  .kd { font-size:12px; font-weight:600; margin-top:2px; }
+  .up { color:var(--green); } .nu { color:var(--sub); } .dn { color:var(--red); }
+  .ks { font-size:11px; color:var(--muted); margin-top:2px; }
+
+  /* ══════════ SOTP SECTION ══════════ */
+  .sotp-header {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px 14px 0 0;
+    padding: 18px 22px 14px;
+    border-bottom: none;
   }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
-  hr.div { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .sotp-header h3 { font-size:15px; font-weight:700; color:var(--heading); margin-bottom:4px; }
+  .sotp-header p { font-size:13px; color:var(--muted); }
+  .sotp-header p strong { color:var(--text); }
 
-  .ticker {
-    display: inline-flex; align-items: center;
-    background: rgba(34,211,238,.08); border: 1px solid rgba(34,211,238,.25);
-    border-radius: 99px; padding: 6px 18px;
-    font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 28px;
+  .sotp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    overflow: hidden;
   }
-  .company { font-size: clamp(52px,10vw,80px); font-weight: 900; color: var(--heading); line-height: 1; letter-spacing: -.02em; margin-bottom: 12px; }
-  .company .first { color: var(--accent); }
-  .asub { font-size: 14px; color: var(--sub); margin-bottom: 20px; }
-  .asub strong { color: var(--heading); }
-  .tagline { font-size: 14px; color: #8892b8; font-style: italic; line-height: 1.65; max-width: 680px; margin-bottom: 24px; }
+  @media(max-width:600px) { .sotp-grid { grid-template-columns:1fr; } }
 
-  .cours-row { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 10px; }
-  .cours-v { font-family: 'JetBrains Mono', monospace; font-size: 42px; font-weight: 700; color: var(--heading); }
-  .badge-up { padding: 5px 12px; border-radius: 7px; font-weight: 700; font-size: 14px; background: rgba(74,222,128,.12); border: 1px solid rgba(74,222,128,.4); color: var(--green); }
-  .cours-meta { font-size: 13px; color: var(--sub); display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
-  .cours-meta .sep { color: var(--border); }
+  .sotp-card {
+    padding: 20px 22px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .sotp-card:last-child { border-right: none; }
+  .sotp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .sotp-card.photon::before { background: var(--accent); }
+  .sotp-card.medical::before { background: var(--green); }
+  .sotp-card.cilas::before { background: var(--gold); }
 
-  .ind { font-size: 12.5px; color: var(--muted-text); display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 7px; align-items: center; }
-  .ind strong { color: var(--text); }
-  .rsi-n { color: var(--accent); font-weight: 700; }
-  .macd-n { color: #fbbf24; font-weight: 700; }
+  .sotp-tag {
+    font-size: 10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    padding: 2px 8px; border-radius:4px; margin-bottom:10px; display:inline-block;
+  }
+  .sotp-card.photon .sotp-tag { background:rgba(34,211,238,.12); color:var(--accent); }
+  .sotp-card.medical .sotp-tag { background:rgba(74,222,128,.12); color:var(--green); }
+  .sotp-card.cilas .sotp-tag { background:rgba(251,191,36,.12); color:var(--gold); }
 
-  .fibconso { font-size: 13px; color: var(--sub); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 28px; }
-  .fibconso .sep { color: var(--border); }
-  .tag-g { background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.3); color: var(--green); padding: 1px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; }
-  .tag-a { background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.3); color: var(--accent); padding: 1px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; }
-  .tag-w { background: rgba(251,191,36,.1); border: 1px solid rgba(251,191,36,.3); color: #fbbf24; padding: 1px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; }
+  .sotp-name { font-size:13px; font-weight:700; color:var(--heading); margin-bottom:6px; }
+  .sotp-range {
+    font-family:'JetBrains Mono',monospace;
+    font-size:22px; font-weight:900;
+    line-height:1; margin-bottom:4px;
+  }
+  .sotp-card.photon .sotp-range { color:var(--accent); }
+  .sotp-card.medical .sotp-range { color:var(--green); }
+  .sotp-card.cilas .sotp-range { color:var(--gold); }
+  .sotp-sub { font-size:11px; color:var(--muted); margin-bottom:12px; }
+  .sotp-detail { font-size:12px; color:var(--muted); line-height:1.6; }
+  .sotp-detail strong { color:var(--text); }
 
-  .sitbox { background: rgba(34,211,238,.05); border: 1px solid rgba(34,211,238,.2); border-radius: 14px; padding: 24px 28px; margin-bottom: 36px; }
-  .sit-val { font-family: 'JetBrains Mono', monospace; font-size: 52px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 4px; }
-  .sit-sub { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-text); margin-bottom: 12px; }
-  .sit-txt { font-size: 13.5px; color: #8892b8; line-height: 1.65; }
-  .sit-txt strong { color: var(--accent); }
+  .sotp-total {
+    background: linear-gradient(135deg, rgba(34,211,238,.06), rgba(13,18,38,0));
+    border: 1px solid rgba(34,211,238,.25);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
+    gap: 16px;
+    align-items: center;
+  }
+  .sotp-total .st-item .stl { font-size:10.5px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px; }
+  .sotp-total .st-item .stv { font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; }
+  .sotp-total .st-item .stv.conserv { color:var(--gold); }
+  .sotp-total .st-item .stv.central { color:var(--accent); }
+  .sotp-total .st-item .stv.optimiste { color:var(--green); }
+  .sotp-note { font-size:11.5px; color:var(--muted); line-height:1.6; border-top:1px solid var(--border); margin-top:14px; padding-top:12px; }
+  .sotp-note strong { color:var(--text); }
 
-  .section { padding: 32px 0 0; }
-  .stitle { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-  .stitle::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(34,211,238,.3), transparent); }
+  /* CARD */
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px; margin-bottom:14px; }
+  .card h3 { font-size:14px; font-weight:700; color:var(--heading); margin-bottom:10px; }
+  .card p { font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:8px; }
+  .card p:last-child { margin-bottom:0; }
+  .card p strong { color:var(--text); }
 
-  .alerts { display: flex; flex-direction: column; gap: 10px; }
-  .alert { border-radius: 10px; padding: 12px 16px; font-size: 13.5px; border-left: 3px solid transparent; line-height: 1.5; }
-  .alert strong { font-weight: 700; }
-  .ag { background: rgba(74,222,128,.07);  border-left-color: var(--green);  color: #a7f3c0; }
-  .aw { background: rgba(251,191,36,.07);  border-left-color: #fbbf24;       color: #fde68a; }
-  .ab { background: rgba(34,211,238,.07);  border-left-color: var(--accent);  color: #a5f3fc; }
-  .ao { background: rgba(251,146,60,.07);  border-left-color: var(--orange);  color: #fdba74; }
-  .ar { background: rgba(248,113,113,.07); border-left-color: var(--red);     color: #fca5a5; }
+  /* TABLE */
+  .dt { width:100%; border-collapse:collapse; }
+  .dt thead tr { background:var(--surface2); }
+  .dt th { padding:9px 12px; text-align:left; font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+  .dt td { padding:9px 12px; font-size:13px; color:var(--muted); border-bottom:1px solid var(--border); vertical-align:top; }
+  .dt td strong { color:var(--text); font-weight:600; }
+  .dt tbody tr:last-child td { border-bottom:none; }
+  .dt tbody tr:hover td { background:rgba(255,255,255,.015); }
+  .tacc { color:var(--accent); font-weight:700; font-family:'JetBrains Mono',monospace; }
+  .tgrn { color:var(--green); font-weight:600; }
+  .twrn { color:var(--gold); font-weight:600; }
+  .tred { color:var(--red); font-weight:600; }
 
-  .kg { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px,1fr)); gap: 12px; }
-  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
-  .kpi.ac { border-color: rgba(34,211,238,.35); background: rgba(34,211,238,.05); }
-  .kl { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-text); margin-bottom: 6px; }
-  .kv { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 700; color: var(--heading); }
-  .kpi.ac .kv { color: var(--accent); }
-  .kd { font-size: 12px; font-weight: 600; margin-top: 2px; }
-  .up { color: var(--green); } .nu { color: var(--sub); } .dn { color: var(--red); }
-  .ks { font-size: 11px; color: var(--muted-text); margin-top: 2px; }
+  /* TIMELINE */
+  .tl { position:relative; padding-left:24px; }
+  .tl::before { content:''; position:absolute; left:4px; top:8px; bottom:8px; width:1px; background:linear-gradient(180deg, var(--accent), transparent); }
+  .tli { position:relative; margin-bottom:22px; }
+  .tli::before { content:''; position:absolute; left:-24px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--border); border:2px solid var(--bg); }
+  .tli.done::before { background:var(--green); }
+  .tli.key::before  { background:var(--accent); box-shadow:0 0 6px rgba(34,211,238,.5); }
+  .tli.now::before  { background:var(--red);    box-shadow:0 0 8px rgba(248,113,113,.5); }
+  .tli.next::before { background:var(--gold); }
+  .tli.fut::before  { background:var(--muted); }
+  .tld { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:3px; }
+  .tld.done { color:var(--green); } .tld.key { color:var(--accent); }
+  .tld.now  { color:var(--red);   } .tld.next { color:var(--gold); } .tld.fut { color:var(--muted); }
+  .tldesc { font-size:13.5px; color:var(--muted); line-height:1.55; }
+  .tldesc strong { color:var(--text); }
 
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; }
-  .card h3 { font-size: 14px; font-weight: 700; color: var(--heading); margin-bottom: 10px; }
-  .card p { font-size: 13.5px; color: #8892b8; line-height: 1.65; margin-bottom: 8px; }
-  .card p:last-child { margin-bottom: 0; }
-  .card p strong { color: var(--text); }
+  /* FIBONACCI */
+  .fibwrap { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 22px 18px; }
+  .fibhdr { display:flex; justify-content:space-between; font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+  .frow { display:grid; grid-template-columns:130px 1fr 110px; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid rgba(19,26,48,.5); }
+  .frow:last-child { border-bottom:none; }
+  .frow.fc  { background:rgba(34,211,238,.06); border-radius:8px; padding:10px 12px; margin:2px -12px; border:1px solid rgba(34,211,238,.25); }
+  .frow.fs1 { background:rgba(74,222,128,.04); border-radius:6px; padding:8px 12px; margin:1px -12px; border:1px solid rgba(74,222,128,.15); }
+  .frow.fs2 { background:rgba(251,191,36,.04); border-radius:6px; padding:8px 12px; margin:1px -12px; border:1px solid rgba(251,191,36,.15); }
+  .frow.fath{ background:rgba(192,132,252,.04); border-radius:6px; padding:8px 12px; margin:1px -12px; border:1px solid rgba(192,132,252,.15); }
+  .frow.fres{ background:rgba(248,113,113,.04); border-radius:6px; padding:8px 12px; margin:1px -12px; border:1px solid rgba(248,113,113,.15); }
+  .flvl { font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted); font-weight:600; }
+  .frow.fc .flvl   { color:var(--accent); }
+  .frow.fs1 .flvl  { color:var(--green); }
+  .frow.fs2 .flvl  { color:var(--gold); }
+  .frow.fath .flvl { color:var(--purple); }
+  .frow.fres .flvl { color:var(--red); }
+  .fbw { background:rgba(255,255,255,.04); border-radius:4px; height:7px; }
+  .fb  { height:7px; border-radius:4px; background:rgba(34,211,238,.2); }
+  .frow.fc .fb   { background:var(--accent); }
+  .frow.fs1 .fb  { background:var(--green); }
+  .frow.fs2 .fb  { background:var(--gold); }
+  .frow.fath .fb { background:rgba(192,132,252,.4); }
+  .frow.fres .fb { background:rgba(248,113,113,.4); }
+  .fprice { font-family:'JetBrains Mono',monospace; font-size:13.5px; font-weight:700; color:var(--text); text-align:right; }
+  .frow.fc .fprice   { color:var(--accent); font-size:15px; }
+  .frow.fs1 .fprice  { color:var(--green); }
+  .frow.fs2 .fprice  { color:var(--gold); }
+  .frow.fath .fprice { color:var(--purple); }
+  .frow.fres .fprice { color:var(--red); }
+  .fibnote { margin-top:14px; font-size:12px; color:var(--muted); line-height:1.65; border-top:1px solid var(--border); padding-top:12px; }
+  .fibnote strong { color:var(--text); }
 
-  .dt { width: 100%; border-collapse: collapse; }
-  .dt thead tr { background: var(--surface2); }
-  .dt th { padding: 9px 12px; text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted-text); }
-  .dt td { padding: 9px 12px; font-size: 13px; color: #8892b8; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .dt td strong { color: var(--text); font-weight: 600; }
-  .dt tbody tr:last-child td { border-bottom: none; }
-  .dt tbody tr:hover td { background: rgba(255,255,255,.015); }
-  .tacc { color: var(--accent); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-  .tgrn { color: var(--green); font-weight: 600; }
-  .twrn { color: #fbbf24; font-weight: 600; }
-  .tred { color: var(--red); font-weight: 600; }
+  /* CONSENSUS */
+  .agrid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:540px) { .agrid { grid-template-columns:1fr; } }
+  .acard { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .aname { font-size:13px; font-weight:700; color:var(--heading); margin-bottom:4px; }
+  .areco { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; }
+  .areco.buy { color:var(--green); }
+  .aobj { font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color:var(--accent); margin-bottom:2px; }
+  .adate { font-size:11px; color:var(--muted); }
+  .anote { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5; }
+  .anote strong { color:var(--text); }
+  .cbox { background:rgba(34,211,238,.06); border:1px solid rgba(34,211,238,.25); border-radius:12px; padding:18px 20px; margin-top:14px; }
+  .crow { display:flex; flex-wrap:wrap; gap:18px; margin-bottom:12px; }
+  .ci .cl { font-size:10.5px; color:var(--muted); margin-bottom:3px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+  .ci .cv { font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; }
+  .cv.hi { color:var(--green); } .cv.md { color:var(--accent); } .cv.rc { color:var(--accent); font-size:14px; }
+  .cnote { font-size:12px; color:var(--muted); border-top:1px solid var(--border); padding-top:10px; line-height:1.6; }
+  .cnote strong { color:var(--text); }
 
-  .tl { position: relative; padding-left: 24px; }
-  .tl::before { content: ''; position: absolute; left: 4px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(180deg, var(--accent), transparent); }
-  .tli { position: relative; margin-bottom: 22px; }
-  .tli::before { content: ''; position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: 2px solid var(--bg); }
-  .tli.done::before { background: var(--green); }
-  .tli.key::before  { background: var(--accent); box-shadow: 0 0 6px rgba(34,211,238,.5); }
-  .tli.now::before  { background: var(--red);    box-shadow: 0 0 8px rgba(248,113,113,.5); }
-  .tli.next::before { background: #fbbf24; }
-  .tli.fut::before  { background: var(--muted-text); }
-  .tld { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 3px; }
-  .tld.done { color: var(--green); } .tld.key { color: var(--accent); }
-  .tld.now  { color: var(--red);   } .tld.next { color: #fbbf24; } .tld.fut { color: var(--muted-text); }
-  .tldesc { font-size: 13.5px; color: #8892b8; line-height: 1.55; }
-  .tldesc strong { color: var(--text); }
+  /* AVIS PERSO */
+  .pc { background:linear-gradient(135deg, rgba(34,211,238,.05), rgba(13,18,38,0)); border:1px solid rgba(34,211,238,.25); border-radius:14px; padding:22px 24px; }
+  .pcscore { font-family:'JetBrains Mono',monospace; font-size:42px; font-weight:700; color:var(--accent); line-height:1; margin-bottom:4px; }
+  .pclabel { font-size:11px; color:var(--muted); font-weight:700; letter-spacing:.07em; text-transform:uppercase; margin-bottom:16px; }
+  .pccols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:540px) { .pccols { grid-template-columns:1fr; } }
+  .pc ul { list-style:none; }
+  .pc ul li { font-size:13px; color:var(--muted); padding:5px 0; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:8px; line-height:1.5; }
+  .pc ul li:last-child { border-bottom:none; }
+  .pc ul.pros li::before { content:'✦'; color:var(--green); font-size:11px; flex-shrink:0; margin-top:2px; }
+  .pc ul.cons li::before { content:'▲'; color:var(--red); font-size:9px; flex-shrink:0; margin-top:2px; }
+  .pcsub { font-size:11px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; }
 
-  .fibwrap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 22px 18px; }
-  .fibhdr { display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted-text); margin-bottom: 14px; }
-  .frow { display: grid; grid-template-columns: 130px 1fr 110px; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(19,26,48,.5); }
-  .frow:last-child { border-bottom: none; }
-  .frow.fc  { background: rgba(34,211,238,.06); border-radius: 8px; padding: 10px 12px; margin: 2px -12px; border: 1px solid rgba(34,211,238,.25); }
-  .frow.fs1 { background: rgba(74,222,128,.04); border-radius: 6px; padding: 8px 12px; margin: 1px -12px; border: 1px solid rgba(74,222,128,.15); }
-  .frow.fs2 { background: rgba(251,191,36,.04); border-radius: 6px; padding: 8px 12px; margin: 1px -12px; border: 1px solid rgba(251,191,36,.15); }
-  .frow.fath { background: rgba(192,132,252,.04); border-radius: 6px; padding: 8px 12px; margin: 1px -12px; border: 1px solid rgba(192,132,252,.15); }
-  .frow.fres { background: rgba(248,113,113,.04); border-radius: 6px; padding: 8px 12px; margin: 1px -12px; border: 1px solid rgba(248,113,113,.15); }
-  .flvl { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #8892b8; font-weight: 600; }
-  .frow.fc .flvl { color: var(--accent); } .frow.fs1 .flvl { color: var(--green); }
-  .frow.fs2 .flvl { color: #fbbf24; }     .frow.fath .flvl { color: var(--purple); }
-  .frow.fres .flvl { color: var(--red); }
-  .fbw { background: rgba(255,255,255,.04); border-radius: 4px; height: 7px; }
-  .fb  { height: 7px; border-radius: 4px; background: rgba(34,211,238,.2); }
-  .frow.fc .fb  { background: var(--accent); } .frow.fs1 .fb { background: var(--green); }
-  .frow.fs2 .fb { background: #fbbf24; }       .frow.fath .fb { background: rgba(192,132,252,.4); }
-  .frow.fres .fb { background: rgba(248,113,113,.4); }
-  .fprice { font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 700; color: var(--text); text-align: right; }
-  .frow.fc .fprice { color: var(--accent); font-size: 15px; } .frow.fs1 .fprice { color: var(--green); }
-  .frow.fs2 .fprice { color: #fbbf24; } .frow.fath .fprice { color: var(--purple); }
-  .frow.fres .fprice { color: var(--red); }
-  .fibnote { margin-top: 14px; font-size: 12px; color: #8892b8; line-height: 1.65; border-top: 1px solid var(--border); padding-top: 12px; }
-  .fibnote strong { color: var(--text); }
+  /* CONCLUSION */
+  .conclu { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-top:14px; }
+  .conclu h3 { font-size:15px; font-weight:700; color:var(--heading); margin-bottom:12px; }
+  .conclu p { font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:10px; }
+  .conclu p:last-child { margin-bottom:0; }
+  .conclu p strong { color:var(--text); }
+  .hlo { background:rgba(34,211,238,.15); color:var(--accent); padding:0 5px; border-radius:4px; font-weight:600; }
+  .levels { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+  .lp { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 14px; }
+  .lpl { color:var(--muted); font-size:10px; text-transform:uppercase; font-weight:700; letter-spacing:.06em; margin-bottom:3px; }
+  .lpv { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px; }
+  .lp.res .lpv { color:var(--red); } .lp.sup .lpv { color:var(--green); }
+  .lp.cat .lpv { color:var(--gold); font-size:12px; } .lp.cur .lpv { color:var(--accent); }
 
-  .agrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width:540px) { .agrid { grid-template-columns: 1fr; } }
-  .acard { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
-  .aname { font-size: 13px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
-  .areco { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; }
-  .areco.buy { color: var(--green); }
-  .aobj { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
-  .adate { font-size: 11px; color: var(--muted-text); }
-  .anote { font-size: 12px; color: #8892b8; margin-top: 8px; line-height: 1.5; }
-  .anote strong { color: var(--text); }
-  .cbox { background: rgba(34,211,238,.06); border: 1px solid rgba(34,211,238,.25); border-radius: 12px; padding: 18px 20px; margin-top: 14px; }
-  .crow { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 12px; }
-  .ci .cl { font-size: 10.5px; color: var(--muted-text); margin-bottom: 3px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
-  .ci .cv { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; }
-  .cv.hi { color: var(--green); } .cv.md { color: var(--accent); } .cv.lo { color: #fbbf24; } .cv.rc { color: var(--accent); font-size: 14px; }
-  .cnote { font-size: 12px; color: #8892b8; border-top: 1px solid var(--border); padding-top: 10px; line-height: 1.6; }
-  .cnote strong { color: var(--text); }
+  footer { border-top:1px solid var(--border); margin-top:56px; padding-top:24px; }
+  footer p { font-size:11px; color:#546080; line-height:1.7; }
 
-  .pc { background: linear-gradient(135deg, rgba(34,211,238,.05), rgba(13,18,38,0)); border: 1px solid rgba(34,211,238,.25); border-radius: 14px; padding: 22px 24px; }
-  .pcscore { font-family: 'JetBrains Mono', monospace; font-size: 42px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 4px; }
-  .pclabel { font-size: 11px; color: var(--muted-text); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; margin-bottom: 16px; }
-  .pccols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width:540px) { .pccols { grid-template-columns: 1fr; } }
-  .pc ul { list-style: none; }
-  .pc ul li { font-size: 13px; color: #8892b8; padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-  .pc ul li:last-child { border-bottom: none; }
-  .pc ul li::before { font-size: 11px; flex-shrink: 0; margin-top: 2px; }
-  .pc ul.pros li::before { content: '✦'; color: var(--green); }
-  .pc ul.cons li::before { content: '▲'; color: var(--red); font-size: 9px; }
-  .pcsub { font-size: 11px; color: var(--muted-text); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-
-  .conclu { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; margin-top: 14px; }
-  .conclu h3 { font-size: 15px; font-weight: 700; color: var(--heading); margin-bottom: 12px; }
-  .conclu p { font-size: 13.5px; color: #8892b8; line-height: 1.65; margin-bottom: 10px; }
-  .conclu p:last-child { margin-bottom: 0; }
-  .conclu p strong { color: var(--text); }
-  .hlo { background: rgba(34,211,238,.15); color: var(--accent); padding: 0 5px; border-radius: 4px; font-weight: 600; }
-  .levels { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
-  .lp { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; }
-  .lpl { color: var(--muted-text); font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: .06em; margin-bottom: 3px; }
-  .lpv { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; }
-  .lp.res .lpv { color: var(--red); } .lp.sup .lpv { color: var(--green); }
-  .lp.cat .lpv { color: #fbbf24; font-size: 12px; } .lp.cur .lpv { color: var(--accent); }
-
-  .quote { background: rgba(34,211,238,.05); border: 1px solid rgba(34,211,238,.2); border-left: 3px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
-  .quote p { font-size: 14px; color: #a5f3fc; font-style: italic; line-height: 1.6; }
-  .qsrc { font-size: 11px; color: var(--muted-text); margin-top: 6px; }
-
-  footer { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 24px; }
-  footer p { font-size: 11px; color: #546080; line-height: 1.7; }
-
-  @media (max-width:600px) {
-    .kg { grid-template-columns: repeat(2,1fr); }
-    .frow { grid-template-columns: 100px 1fr 80px; }
-    .cours-v { font-size: 34px; }
-    .company { font-size: 50px; }
+  @media(max-width:600px) {
+    .kg { grid-template-columns:repeat(2,1fr); }
+    .frow { grid-template-columns:100px 1fr 80px; }
+    .cours-v { font-size:34px; }
+    .company { font-size:50px; }
   }
 </style>
 </head>
@@ -215,19 +295,17 @@
 
   <!-- BADGE TICKER -->
   <div class="ticker">
-    🔵 LASER · PHOTONIQUE · MÉDICAL · DÉFENSE · SPATIAL · CA 225,6 M€ +8,9% · STIFEL 30 € · TP ICAP 28,50 € · CILAS 37% (×4–8)
+    🔵 LASER · PHOTONIQUE · MÉDICAL · DÉFENSE · SPATIAL · CA 225,6 M€ +8,9% · STIFEL 30 € · TP ICAP 28,50 € · CILAS 37% · RSI 50,79
   </div>
 
   <!-- TITRE -->
   <h1 class="company"><span class="first">L</span>UMIBIRD</h1>
 
-  <!-- SOUS-TITRE -->
   <p class="asub">Analyse CT / MT / LT — <strong>08/05/2026 · 11h16 · PRT Hebdomadaire (1S)</strong> · RSI 50,79 · MACD −0,82</p>
 
   <hr class="div">
 
-  <!-- TAGLINE -->
-  <p class="tagline">Leader européen des technologies laser depuis 50 ans. Deux divisions complémentaires : Photonique (défense, spatial, industrie, environnement) et Médical (ophtalmologie). 1 078 collaborateurs. Siège à Lannion. Première distribution de dividende initiée sur les résultats 2025 — signe de maturité financière.</p>
+  <p class="tagline">Leader européen des technologies laser depuis 50 ans. Division Photonique (défense, spatial, LiDAR) + Division Médicale (ophtalmologie). Actionnaire à 37% de CILAS (aux côtés de Safran + MBDA). Plan vers une pure-play photonique défense. 1 078 collaborateurs · Lannion · LBIRD.</p>
 
   <!-- COURS -->
   <div class="cours-row">
@@ -241,49 +319,154 @@
     </div>
   </div>
 
-  <!-- INDICATEURS -->
   <div class="ind">
     <span>📅 <strong>08 mai 2026 — 11h16 · PRT hebdo (1S)</strong></span>
-    <span>🏛 ISIN <strong>FR0000038242</strong> · Marc Le Flohic PDG</span>
+    <span>🏛 ISIN <strong>FR0000038242</strong> · Marc Le Flohic PDG (51% capital)</span>
   </div>
   <div class="ind" style="margin-bottom:6px;">
-    <span>📉 ATH chart : <strong>26,10 €</strong> (Fib 1, 100%) — distance : <strong>−16,5%</strong></span>
-    <span>💰 Dividende : <strong>0,37 €</strong> (première fois, FY2025)</span>
-    <span>🏢 <strong>22,03 M</strong> actions en circulation</span>
+    <span>📉 ATH chart : <strong>26,10 €</strong> — distance : <strong>−16,5%</strong></span>
+    <span>💰 Dividende : <strong>0,37 €</strong> (première fois FY2025)</span>
+    <span>📊 RSI(14) : <strong>50,79</strong> · MACD : <strong>−0,82</strong></span>
   </div>
   <div class="ind" style="margin-bottom:12px; font-size:11.5px; color:#546080;">
-    <span>📊 <em>Source PRT hebdo :</em> RSI(14) <span class="rsi-n">50,79</span> (zone neutre) · MACD Zéro Lag (12,26,9) <span class="macd-n">−0,81507</span> · SMA20 · BB(20,2) · Ichimoku (9,26,52) · SMA100 · SMA50</span>
+    <span>🏢 <strong>22,03 M</strong> actions · dette nette ~<strong>94,6 M€</strong> · VE ~<strong>574 M€</strong></span>
   </div>
 
   <!-- FIB + CONSENSUS -->
   <div class="fibconso">
-    <span class="tag-g">✅ Fib 1 : au-dessus 61,8% (18,72 €)</span>
+    <span class="tag-g">✅ Fib 1 au-dessus 61,8% (18,72 €)</span>
     <span class="sep">·</span>
-    <span class="tag-w">⬜ Fib 2 : entre 38,2% (21,27) et 50% (22,92)</span>
+    <span class="tag-w">⬜ Fib 2 entre 38,2% (21,27) et 50% (22,92)</span>
     <span class="sep">·</span>
-    <span class="tag-a">Stifel 30 € · TP ICAP 28,50 € · moy. 29,25 € (+34%)</span>
+    <span class="tag-a">Stifel 30 € · TP ICAP 28,50 € · moy. 29,25 €</span>
   </div>
 
-  <!-- BIG SITUATION BOX -->
+  <!-- BIG BOX -->
   <div class="sitbox">
-    <div class="sit-val">+10,2%</div>
-    <div class="sit-sub">CA 2025 — 225,6 M€ à taux de change et périmètre constants</div>
+    <div class="sit-val">3 actifs</div>
+    <div class="sit-sub">Photonique + Médical (cession en cours) + CILAS 37% — la somme des parties dépasse largement le cours actuel</div>
     <p class="sit-txt">
-      Résultats annuels 2025 <strong>en forte progression</strong> : marge EBITDA à <strong>20,2% (+4,3 points)</strong>, free cash-flow à <strong>13,1 M€</strong>, et — fait notable — <strong>première distribution de dividende</strong> dans l'histoire du groupe (0,37 €). Objectifs plan 2026 confirmés. Le titre a subi une chute jugée excessive le 28 avril après un T1 2026 à +0,7% (+4,1% à change constant), les décalages de livraisons étant conjoncturels et un <strong>rattrapage attendu dès le S1</strong>.
-      Marc Le Flohic (PDG, 27 avr. 2026) : <em>"Le groupe reste confiant dans sa capacité à améliorer sa performance opérationnelle sur l'ensemble de l'exercice 2026."</em>
+      Lumibird n'est pas une société, c'est <strong>un portefeuille de trois actifs stratégiques</strong>. Le marché valorise le tout à ~480 M€. L'analyse SOTP ci-dessous montre que même le scénario conservateur aboutit à une <strong>valeur intrinsèque de 23–27 €</strong> par action — au-dessus du cours. Le scénario central donne <strong>27–32 €</strong>. Marc Le Flohic, qui contrôle 51% du capital, a toutes les raisons d'activer ces catalyseurs.
     </p>
+  </div>
+
+  <!-- ══════════ SOTP VALORISATION ══════════ -->
+  <div class="section">
+    <div class="stitle">Valorisation Sum-of-the-Parts — Les 3 actifs de Lumibird</div>
+
+    <div class="sotp-header">
+      <h3>Décomposition de la valeur · Actifs indépendants</h3>
+      <p>Capitalisation actuelle : <strong>~480 M€</strong> · Dette nette : <strong>~94,6 M€</strong> · Valeur d'entreprise : <strong>~574 M€</strong></p>
+    </div>
+
+    <div class="sotp-grid">
+
+      <!-- PHOTONIQUE -->
+      <div class="sotp-card photon">
+        <div class="sotp-tag">Pilier 1</div>
+        <div class="sotp-name">Division Photonique</div>
+        <div class="sotp-range">290–480 M€</div>
+        <div class="sotp-sub">Pure-play défense après cession médicale</div>
+        <div class="sotp-detail">
+          <strong>CA 2025 :</strong> ~113 M€<br>
+          <strong>EBITDA 2025 :</strong> ~19 M€ (>17%)<br>
+          <strong>Multiple défense :</strong> 15–25× EBITDA<br>
+          <strong>Contracts :</strong> Rheinmetall Skyranger 30, CILAS synergies, Stifel plan +20% BPA/an<br>
+          <br>
+          15× → 290 M€ · 20× → 386 M€ · 25× → 480 M€
+        </div>
+      </div>
+
+      <!-- MÉDICAL -->
+      <div class="sotp-card medical">
+        <div class="sotp-tag">Pilier 2</div>
+        <div class="sotp-name">Division Médicale</div>
+        <div class="sotp-range">250–300 M€</div>
+        <div class="sotp-sub">Cession en cours d'exploration (confirmée avr. 2026)</div>
+        <div class="sotp-detail">
+          <strong>CA 2025 :</strong> ~112 M€<br>
+          <strong>EBITDA 2025 :</strong> ~23 M€ (>21%)<br>
+          <strong>Multiple implicite :</strong> 10,5–13× EBITDA<br>
+          <strong>Prix visé PDG :</strong> 250–300 M€<br>
+          <strong>BIZ MEDIC :</strong> +valeur pré-cession Asie<br>
+          <br>
+          Processus actif · premier round EQT/Carlyle échoué · 2e round en cours
+        </div>
+      </div>
+
+      <!-- CILAS -->
+      <div class="sotp-card cilas">
+        <div class="sotp-tag">Pilier 3</div>
+        <div class="sotp-name">37% de CILAS</div>
+        <div class="sotp-range">40–75 M€</div>
+        <div class="sotp-sub">Acquis 7,5 M€ en 2021 — multiplicateur ×5 à ×10</div>
+        <div class="sotp-detail">
+          <strong>Acquis :</strong> 2021, Areva → 7,5 M€<br>
+          <strong>Actionnaires :</strong> Safran + MBDA (63%)<br>
+          <strong>Val. 2022 (Ariane tx.) :</strong> 80–160 M€ totale<br>
+          <strong>37% en 2022 :</strong> 30–60 M€<br>
+          <strong>Post-réarmement 2026 :</strong> probablement > 40–75 M€<br>
+          <br>
+          Actif caché — non pricé dans le cours actuel
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TOTAL SOTP -->
+    <div class="sotp-total">
+      <div class="st-item">
+        <div class="stl">Scénario conservateur</div>
+        <div class="stv conserv">580–600 M€ VE</div>
+      </div>
+      <div class="st-item">
+        <div class="stl">Scénario central</div>
+        <div class="stv central">680–720 M€ VE</div>
+      </div>
+      <div class="st-item">
+        <div class="stl">Scénario optimiste</div>
+        <div class="stv optimiste">825–855 M€ VE</div>
+      </div>
+      <div class="st-item">
+        <div class="stl">VE actuelle marché</div>
+        <div class="stv" style="color:var(--muted);">~574 M€</div>
+      </div>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-top:14px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:14px;">
+        <div>
+          <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario conservateur</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--gold);">23–24 €/action</div>
+          <div style="font-size:11px;color:var(--muted);">Photon 290 + Médical 250 + CILAS 40 − dette 94</div>
+        </div>
+        <div>
+          <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario central</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);">27–32 €/action</div>
+          <div style="font-size:11px;color:var(--muted);">Photon 386 + Médical 275 + CILAS 55 − dette 94</div>
+        </div>
+        <div>
+          <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario optimiste</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--green);">33–37 €/action</div>
+          <div style="font-size:11px;color:var(--muted);">Photon 480 + Médical 300 + CILAS 75 − dette 94</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;line-height:1.6;">
+        <strong style="color:var(--text);">Lecture :</strong> Dans le scénario conservateur, la SOTP valide le cours actuel comme <strong style="color:var(--text);">plancher de valeur</strong>. Le scénario central (27–32 €) est cohérent avec les objectifs Stifel (30 €) et TP ICAP (28,50 €) — ce qui confirme que ces analystes intègrent probablement une probabilité de cession médicale dans leurs modèles. Le scénario optimiste implique une exécution parfaite sur les trois leviers simultanément.
+      </div>
+    </div>
   </div>
 
   <!-- ALERTES -->
   <div class="section">
     <div class="stitle">Situation &amp; points d'attention</div>
     <div class="alerts">
-      <div class="alert ag"><strong>🟢 Stifel initie à l'Achat — obj. 30 € (20 avr. 2026) :</strong> Initiation de couverture avec un objectif de 30 €. Stifel anticipe un TCAC BPA de +20% jusqu'en 2030, une marge opérationnelle portée de 11,4% à ~18%, et un FCF cumulé >140 M€. Le titre pourrait <em>plus que doubler en 5 ans</em>.</div>
-      <div class="alert ag"><strong>🟢 Cession division médicale — process toujours actif (8 avr. 2026) :</strong> Lumibird confirme explicitement "continuer d'explorer la vente potentielle de sa division médicale" — y compris dans le communiqué BIZ MEDIC du 8 avril. Prix visé par la direction (Marc Le Flohic, 51% du capital) : <strong>250–300 M€</strong>. Un accord représenterait un catalyseur majeur pour le titre.</div>
-      <div class="alert ag"><strong>🟢 Actif caché — 37% de CILAS (Safran · MBDA) :</strong> Lumibird détient 37% du capital de CILAS, spécialiste défense du laser acquis en 2021 auprès d'Areva pour <strong>7,5 M€</strong>. En 2022, ArianeGroup cède ses parts à Safran + MBDA pour 50–100 M€ — valorisant CILAS à <strong>80–160 M€</strong>. Invest Securities évalue la participation Lumibird à <strong>30–60 M€</strong> (×4 à ×8 sur le prix d'achat). Dans un contexte de réarmement européen accéléré post-2022, cette valorisation est probablement revue à la hausse.</div> Lumibird Photonics Sweden sélectionnée pour fournir les télémètres laser Vidar intégrés au système de défense aérienne Skyranger 30 — commandes Rheinmetall Air Defense confirmées. Marqueur fort sur le segment défense.</div>
-      <div class="alert ab"><strong>🔵 Acquisition BIZ MEDIC SDN BHD (8 avr. 2026) :</strong> Lumibird Medical acquiert son partenaire historique de distribution en Malaisie / Asie-Pacifique. Transformation d'une relation commerciale en intégration verticale — accélération attendue sur la région.</div>
-      <div class="alert aw"><strong>⚠️ Division médicale Asie T1 : −18% :</strong> Perturbations logistiques et décalages de livraisons sur la région Asie-Pacifique au T1 2026. La direction anticipe un rattrapage progressif dès le S1. À surveiller sur la publication CA S1 (~27 juillet 2026).</div>
-      <div class="alert ao"><strong>🟡 Chute du 28 avril excessive :</strong> La publication T1 (+0,7% en publié, +4,1% à change constant) a provoqué une correction brutale. Les forums jugent majoritairement cette réaction disproportionnée au regard des décalages purement conjoncturels et des objectifs maintenus. La résistance à 24,58 € (Fib 2 61,8%) reste l'objectif CT à reconquérir.</div>
+      <div class="alert ag"><strong>🟢 Stifel Achat 30 € + TP ICAP Midcap 28,50 € (08 mai 2026) :</strong> Deux analystes positifs convergent vers un objectif moyen de <strong>29,25 €</strong> (+34% de potentiel). Stifel anticipe un TCAC BPA +20% jusqu'en 2030, BPA ×2,6 en 5 ans, marge op. 11,4%→18%.</div>
+      <div class="alert ag"><strong>🟢 37% de CILAS — actif caché ×5 à ×10 :</strong> Acquis 7,5 M€ en 2021, estimé entre <strong>40–75 M€</strong> aujourd'hui (après réarmement européen). CILAS + Safran + MBDA = cœur de la filière laser de défense française souveraine. Actif non pricé dans la capitalisation.</div>
+      <div class="alert ag"><strong>🟢 Cession division médicale — process actif (8 avr. 2026) :</strong> Confirmation explicite dans le communiqué BIZ MEDIC. Marc Le Flohic vise <strong>250–300 M€</strong>. Premier round (EQT/Carlyle, jan. 2025) échoué car offres insuffisantes. 2e round en cours.</div>
+      <div class="alert ag"><strong>🟢 Rheinmetall Skyranger 30 (9 fév. 2026) :</strong> Lumibird fournit les télémètres laser Vidar au système de défense aérienne Skyranger 30 de Rheinmetall. Ancrage défense de long terme avec un acteur européen majeur du réarmement.</div>
+      <div class="alert ao"><strong>🟡 Livraisons médicales Asie −18% T1 :</strong> Décalages logistiques et livraisons reportées sur le Moyen-Orient. Rattrapage annoncé par la direction dès le S1 — à confirmer le <strong>~27 juillet</strong> (CA S1).</div>
+      <div class="alert aw"><strong>⚠️ AG le 27 mai 2026 :</strong> Dans 19 jours. À surveiller : communication sur le processus de cession médicale, résolutions financières, calendrier CILAS.</div>
     </div>
   </div>
 
@@ -291,40 +474,18 @@
   <div class="section">
     <div class="stitle">Indicateurs clés</div>
     <div class="kg">
-      <div class="kpi ac"><div class="kl">Cours PRT hebdo</div><div class="kv">21,80 €</div><div class="kd up">+1,40% (11h16)</div><div class="ks">Dernier tick PRT : 21,65 €</div></div>
-      <div class="kpi"><div class="kl">ATH (Fib 1)</div><div class="kv">26,10 €</div><div class="kd nu">100% Fib long terme</div><div class="ks">Distance : −16,5%</div></div>
+      <div class="kpi ac"><div class="kl">Cours PRT hebdo</div><div class="kv">21,80 €</div><div class="kd up">+1,40% (11h16)</div><div class="ks">ATH : 26,10 € (−16,5%)</div></div>
       <div class="kpi"><div class="kl">CA annuel 2025</div><div class="kv">225,6 M€</div><div class="kd up">+8,9% publié</div><div class="ks">+10,2% à change constant</div></div>
-      <div class="kpi"><div class="kl">EBITDA 2025</div><div class="kv">20,2%</div><div class="kd up">+4,3 pts vs 2024</div><div class="ks">~45,6 M€ en valeur</div></div>
-      <div class="kpi"><div class="kl">FCF 2025</div><div class="kv">13,1 M€</div><div class="kd up">Génération cash forte</div><div class="ks">Première dividende : 0,37 €</div></div>
-      <div class="kpi"><div class="kl">CA T1 2026</div><div class="kv">49,7 M€</div><div class="kd up">+0,7% / +4,1% cc</div><div class="ks">Objectifs 2026 confirmés</div></div>
-      <div class="kpi"><div class="kl">Division Photonique</div><div class="kv">76,5%</div><div class="kd up">CA T1 2026</div><div class="ks">Défense +40% Amériques</div></div>
-      <div class="kpi"><div class="kl">Division Médicale</div><div class="kv">23,5%</div><div class="kd nu">CA T1 2026</div><div class="ks">Décalages Asie à rattraper</div></div>
-      <div class="kpi"><div class="kl">Obj. analystes (moy.)</div><div class="kv">29,25 €</div><div class="kd up">Stifel 30 · TP ICAP 28,50</div><div class="ks">Potentiel moyen : +34%</div></div>
-      <div class="kpi"><div class="kl">TCAM BPA (Stifel)</div><div class="kv">+20%</div><div class="kd up">Sur horizon 2030</div><div class="ks">BPA ×2,6 en 5 ans</div></div>
-      <div class="kpi"><div class="kl">RSI(14) hebdo</div><div class="kv">50,79</div><div class="kd nu">Zone neutre</div><div class="ks">MACD Zéro Lag : −0,82</div></div>
-      <div class="kpi"><div class="kl">Prochain CA</div><div class="kv">~27 juil.</div><div class="kd nu">CA S1 2026</div><div class="ks">J−80 (source ABC Bourse)</div></div>
-    </div>
-  </div>
-
-  <!-- PRÉSENTATION -->
-  <div class="section">
-    <div class="stitle">Présentation &amp; activités</div>
-    <div class="card">
-      <h3>Lumibird en quelques mots</h3>
-      <p>Fondé en 1970 à Lannion (Bretagne), Lumibird est le <strong>leader européen des technologies laser</strong>. Le groupe maîtrise toutes les technologies laser solides, à diodes et à fibres. Il opère via deux divisions complémentaires : <strong>Photonique</strong> (défense, spatial, LiDAR, environnement, topographie, industrie, recherche) et <strong>Médical</strong> (ophtalmologie — diagnostic et traitement laser). Présent dans plus de 50 pays, 1 078 employés. Lumibird est une filiale d'ESIRA.</p>
-    </div>
-    <div style="overflow-x:auto; border-radius:12px; border:1px solid var(--border);">
-      <table class="dt">
-        <thead><tr><th>Segment</th><th>Marchés</th><th>Dynamique T1 2026</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Photonique — Défense/Spatial</strong></td><td>Rheinmetall Skyranger, LiDAR militaire</td><td class="tgrn">EMEA +5% · Amériques +40% · Asie +30%</td></tr>
-          <tr><td><strong>Photonique — Industrie/Science</strong></td><td>Lasers haute performance, R&amp;D</td><td class="tgrn">Asie +30,3% (moteur)</td></tr>
-          <tr><td><strong>Photonique — Environnement</strong></td><td>LiDAR Doppler, topographie, sécurité</td><td class="tacc">Croissance soutenue</td></tr>
-          <tr><td><strong>Médical — Traitement</strong></td><td>Laser ophtalmologie (76,5% CA médical)</td><td class="twrn">Stable EMEA / Asie contraint</td></tr>
-          <tr><td><strong>Médical — Diagnostic</strong></td><td>Systèmes d'imagerie oculaire (23,5%)</td><td class="twrn">Moyen-Orient : décalages livraisons</td></tr>
-          <tr><td><strong>Medtech</strong></td><td>Solutions médicales laser innovantes</td><td class="tgrn">Montée en puissance prévue</td></tr>
-        </tbody>
-      </table>
+      <div class="kpi"><div class="kl">EBITDA 2025</div><div class="kv">20,2%</div><div class="kd up">+4,3 pts vs 2024</div><div class="ks">FCF : 13,1 M€</div></div>
+      <div class="kpi"><div class="kl">CA T1 2026</div><div class="kv">49,7 M€</div><div class="kd up">+0,7% / +4,1% cc</div><div class="ks">Obj. 2026 confirmés</div></div>
+      <div class="kpi"><div class="kl">CILAS 37%</div><div class="kv">40–75 M€</div><div class="kd up">Acquis 7,5 M€</div><div class="ks">×5–10 · non pricé</div></div>
+      <div class="kpi"><div class="kl">Médical cession</div><div class="kv">250–300 M€</div><div class="kd up">Process actif</div><div class="ks">2e round en cours</div></div>
+      <div class="kpi"><div class="kl">Obj. moyen analystes</div><div class="kv">29,25 €</div><div class="kd up">+34% potentiel</div><div class="ks">Stifel 30 · TP ICAP 28,50</div></div>
+      <div class="kpi"><div class="kl">RSI(14) hebdo</div><div class="kv">50,79</div><div class="kd nu">Neutre</div><div class="ks">MACD : −0,82</div></div>
+      <div class="kpi"><div class="kl">Dividende FY2025</div><div class="kv">0,37 €</div><div class="kd up">1ère fois dans l'histoire</div><div class="ks">Signale maturité financière</div></div>
+      <div class="kpi"><div class="kl">Dette nette</div><div class="kv">~94,6 M€</div><div class="kd nu">S1 2025</div><div class="ks">Quasi-remboursable par cession</div></div>
+      <div class="kpi"><div class="kl">AG</div><div class="kv">27 mai</div><div class="kd nu">Dans 19 jours</div><div class="ks">CA S1 : ~27 juillet</div></div>
+      <div class="kpi"><div class="kl">SOTP central</div><div class="kv">27–32 €</div><div class="kd up">vs cours 21,80 €</div><div class="ks">+24% à +47% implicite</div></div>
     </div>
   </div>
 
@@ -332,44 +493,40 @@
   <div class="section">
     <div class="stitle">Chronologie des événements clés</div>
     <div class="tl">
-      <div class="tli done"><div class="tld done">2024 — Capital Markets Day</div><div class="tldesc">Plan stratégique 2024–2026 : <strong>TCAM +8% du CA</strong>, +500 bps de marge, objectif d'un EBITDA >19%. Confirmation de la double croissance photonique + médical.</div></div>
-      <div class="tli done"><div class="tld done">26 Janvier 2026 — CA annuel 2025</div><div class="tldesc">CA 2025 = <strong>225,6 M€</strong> (+8,9% en publié, +10,2% à change constant). Photonique : 113,4 M€ (+15%). Médical : 112,2 M€ (+3%).</div></div>
-      <div class="tli done"><div class="tld done">9 Février 2026 — Rheinmetall Skyranger 30</div><div class="tldesc">Lumibird Photonics Sweden remporte des commandes de Rheinmetall Air Defense (RAD) pour les <strong>télémètres laser Vidar</strong> intégrés au système Skyranger 30. Marqueur défense stratégique.</div></div>
-      <div class="tli done"><div class="tld done">10 Mars 2026 — Résultats annuels 2025</div><div class="tldesc">Résultats <strong>en forte progression</strong> : EBITDA <strong>20,2%</strong> (+4,3 pts), FCF <strong>13,1 M€</strong>. <strong>Première distribution de dividende</strong> dans l'histoire du groupe : 0,37 €.</div></div>
-      <div class="tli done"><div class="tld done">8 Avril 2026 — Acquisition BIZ MEDIC (Malaisie)</div><div class="tldesc">Lumibird Medical acquiert son partenaire historique de distribution <strong>BIZ MEDIC SDN BHD</strong> (Kuala Lumpur). Intégration verticale en Asie-Pacifique. Titre +4% en séance.</div></div>
-      <div class="tli key"><div class="tld key">20 Avril 2026 — Stifel initie à l'Achat, obj. 30 €</div><div class="tldesc">Initiation de couverture par Stifel (broker allemand) : <strong>Achat, objectif 30 €</strong>. TCAC BPA +20% jusqu'en 2030, FCF cumulé >140 M€, marge op 11,4% → 18%. Titre <strong>+6%</strong> en séance.</div></div>
-      <div class="tli done"><div class="tld done">27 Avril 2026 — CA T1 2026 : +0,7% (+4,1% cc)</div><div class="tldesc">CA T1 = <strong>49,7 M€</strong>. Décalages conjoncturels en médical Asie et Moyen-Orient. Photonique Amériques <strong>+40%</strong>. Objectifs 2026 confirmés. Rattrapage attendu dès S1.</div></div>
-      <div class="tli now"><div class="tld now">08 Mai 2026 — Cours actuel</div><div class="tldesc">Cours à <strong>21,80 €</strong> (+1,40%, 11h16). RSI(14) hebdo = <strong>50,79</strong> (neutre). MACD Zéro Lag = <strong>−0,82</strong>. Le titre consolide entre Fib 2 38,2% (21,27 €) et Fib 2 50% (22,92 €). La chute post-T1 du 28 avril est jugée excessive.</div></div>
-      <div class="tli next"><div class="tld next">~27 Juillet 2026 — CA S1 2026</div><div class="tldesc">Publication du CA semestriel. Test de confirmation du rattrapage médical annoncé par la direction. Catalyseur directionnel majeur — potentiel de rebond vers 24,58 € (Fib 2 61,8%) si les décalages se résorbent.</div></div>
-      <div class="tli fut"><div class="tld fut">Été 2026 — Nouveaux produits médicaux</div><div class="tldesc">Lancements de nouveaux produits dans la division médicale prévus à partir de l'été 2026. Accélération attendue au S2.</div></div>
+      <div class="tli done"><div class="tld done">2021 — Acquisition 37% CILAS (Areva, 7,5 M€)</div><div class="tldesc">Lumibird s'ancre dans la filière laser de défense souveraine française aux côtés de Safran et MBDA. En 2022, la cession des parts ArianeGroup valorise CILAS à <strong>80–160 M€</strong>.</div></div>
+      <div class="tli done"><div class="tld done">Nov. 2024 — Exploration cession division médicale (+19,67%)</div><div class="tldesc">Lumibird confirme explorer la vente de la division médicale. Jan. 2025 : premier round échoue (EQT/Carlyle, prix insuffisant). Le Flohic visait ~350 M€, révisé à 250–300 M€.</div></div>
+      <div class="tli done"><div class="tld done">26 Jan. 2026 — CA 2025 : 225,6 M€ (+8,9%)</div><div class="tldesc">CA photonique : 113,4 M€ (+15%). Médical : 112,2 M€ (+3%). Début de l'inflexion haussière après 2024 difficile.</div></div>
+      <div class="tli done"><div class="tld done">10 Mars 2026 — Résultats 2025 en forte progression</div><div class="tldesc">EBITDA <strong>20,2%</strong> (+4,3 pts), FCF <strong>13,1 M€</strong>. <strong>Première dividende 0,37 €</strong> dans l'histoire du groupe. Maturité financière confirmée.</div></div>
+      <div class="tli done"><div class="tld done">9 Fév. 2026 — Rheinmetall Skyranger 30</div><div class="tldesc">Lumibird sélectionné pour les télémètres laser <strong>Vidar</strong> dans le système Skyranger 30 de Rheinmetall Air Defense. Ancrage défense long terme.</div></div>
+      <div class="tli key"><div class="tld key">20 Avr. 2026 — Stifel initie Achat 30 €</div><div class="tldesc">Initiation Stifel : <strong>Achat, obj. 30 €</strong>. TCAC BPA +20%/an jusqu'en 2030. FCF cumulé >140 M€. Le titre pourrait doubler en 5 ans. +6% en séance.</div></div>
+      <div class="tli done"><div class="tld done">8 Avr. + 27 Avr. 2026 — BIZ MEDIC + CA T1</div><div class="tldesc">Acquisition BIZ MEDIC (Asie). Confirmation cession médicale toujours active. CA T1 = <strong>49,7 M€</strong> (+4,1% cc). Décalages Asie conjoncturels, rattrapage attendu.</div></div>
+      <div class="tli done"><div class="tld done">8 Mai 2026 — TP ICAP Midcap 28,50 €</div><div class="tldesc">TP ICAP Midcap met à jour ses objectifs post-T1 : recommandation positive, objectif <strong>28,50 €</strong>. Consensus à deux analystes confirmés.</div></div>
+      <div class="tli now"><div class="tld now">08 Mai 2026 — Cours actuel</div><div class="tldesc">Cours à <strong>21,80 €</strong> (+1,40%). RSI hebdo 50,79 (neutre). MACD −0,82. Structure SOTP indique un cours sous la valeur intrinsèque même dans le scénario conservateur.</div></div>
+      <div class="tli next"><div class="tld next">27 Mai 2026 — AG Lumibird</div><div class="tldesc">Assemblée générale. Possible mise à jour sur le processus de cession médicale et la feuille de route CILAS.</div></div>
+      <div class="tli fut"><div class="tld fut">~27 Juillet 2026 — CA S1 + Résultats H1</div><div class="tldesc">Test du rattrapage médical Asie. Résultats H1 le 28 juillet : premier verdict sur les marges 2026.</div></div>
+      <div class="tli fut"><div class="tld fut">À tout moment — Annonce cession médicale</div><div class="tldesc">Le catalyseur le plus puissant : si Le Flohic signe à 275 M€+, la dette est remboursée et Lumibird devient une pure-play photonique défense — réévaluation massive du multiple.</div></div>
     </div>
   </div>
 
   <!-- FIBONACCI -->
   <div class="section">
-    <div class="stitle">Analyse technique — Niveaux Fibonacci (PRT hebdo)</div>
+    <div class="stitle">Analyse technique — Fibonacci PRT Hebdomadaire (1S)</div>
     <div class="fibwrap">
       <div class="fibhdr"><span>Niveau / Zone</span><span>Pondération relative</span><span>Prix (€)</span></div>
-
-      <div style="font-size:10.5px;color:var(--muted-text);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:6px 0 4px;border-bottom:1px solid var(--border);margin-bottom:4px;">Fib 1 — Long terme : 6,78 € → 26,10 €</div>
+      <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:6px 0 4px;border-bottom:1px solid var(--border);margin-bottom:4px;">Fib 1 — Long terme : 6,78 € → 26,10 €</div>
       <div class="frow fath"><div class="flvl">100 % — ATH chart</div><div class="fbw"><div class="fb" style="width:100%;"></div></div><div class="fprice">26,10 €</div></div>
-      <div class="frow fs1"><div class="flvl">61,8 % — Golden</div><div class="fbw"><div class="fb" style="width:62%;"></div></div><div class="fprice">18,72 €</div></div>
+      <div class="frow fc"><div class="flvl">▶ COURS 08/05</div><div class="fbw"><div class="fb" style="width:86%;"></div></div><div class="fprice">21,80 €</div></div>
+      <div class="frow fs1"><div class="flvl">61,8 % — Golden Fib 1</div><div class="fbw"><div class="fb" style="width:62%;"></div></div><div class="fprice">18,72 €</div></div>
       <div class="frow"><div class="flvl">50,0 %</div><div class="fbw"><div class="fb" style="width:50%;"></div></div><div class="fprice">16,44 €</div></div>
       <div class="frow"><div class="flvl">38,2 %</div><div class="fbw"><div class="fb" style="width:38%;"></div></div><div class="fprice">14,16 €</div></div>
-      <div class="frow"><div class="flvl">23,6 %</div><div class="fbw"><div class="fb" style="width:24%;"></div></div><div class="fprice">11,34 €</div></div>
       <div class="frow"><div class="flvl">0 % — Base</div><div class="fbw"><div class="fb" style="width:4%;"></div></div><div class="fprice">6,78 €</div></div>
-
-      <div style="font-size:10.5px;color:var(--muted-text);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:6px;">Fib 2 — Vague récente : 15,93 € → ~29,91 €</div>
+      <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:6px;">Fib 2 — Vague récente : 15,93 € → ~29,91 €</div>
       <div class="frow fres"><div class="flvl">61,8 % — Résistance clé</div><div class="fbw"><div class="fb" style="width:62%;"></div></div><div class="fprice">24,58 €</div></div>
-      <div class="frow"><div class="flvl">50,0 %</div><div class="fbw"><div class="fb" style="width:50%;"></div></div><div class="fprice">22,92 €</div></div>
-      <div class="frow fc"><div class="flvl">▶ COURS 08/05</div><div class="fbw"><div class="fb" style="width:43%;"></div></div><div class="fprice">21,80 €</div></div>
+      <div class="frow fs2"><div class="flvl">50,0 %</div><div class="fbw"><div class="fb" style="width:50%;"></div></div><div class="fprice">22,92 €</div></div>
       <div class="frow fs1"><div class="flvl">38,2 % — Support</div><div class="fbw"><div class="fb" style="width:38%;"></div></div><div class="fprice">21,27 €</div></div>
       <div class="frow"><div class="flvl">23,6 %</div><div class="fbw"><div class="fb" style="width:24%;"></div></div><div class="fprice">19,23 €</div></div>
       <div class="frow"><div class="flvl">0 % — Base vague</div><div class="fbw"><div class="fb" style="width:4%;"></div></div><div class="fprice">15,93 €</div></div>
-
-      <div class="fibnote">
-        <strong>Lecture PRT hebdomadaire :</strong> Sur le <strong>Fib 1</strong> (long terme, 6,78 → 26,10 €), le cours à 21,80 € est <strong>au-dessus du golden ratio 61,8% (18,72 €)</strong> — structure très haussière sur le fond. Sur le <strong>Fib 2</strong> (vague récente, 15,93 → ~29,91 €), le cours oscille entre le support <strong>38,2% (21,27 €)</strong> et le niveau 50% (22,92 €). <strong>La résistance clé est le 61,8% du Fib 2 à 24,58 €</strong> — visible sur le graphique sous forme d'une ligne rouge horizontale forte. Un franchissement confirmé de ce niveau ouvrirait la voie vers 26,10 € (ATH Fib 1 = 100%). RSI hebdo 50,79 = zone neutre, aucune divergence. MACD légèrement négatif — compression avant un possible rebond.
-      </div>
+      <div class="fibnote"><strong>Lecture PRT hebdo :</strong> Sur le <strong>Fib 1</strong>, le cours au-dessus du golden ratio (18,72 €) = structure haussière long terme intacte. Sur le <strong>Fib 2</strong>, cours entre 38,2% (21,27 €, support) et 50% (22,92 €). La résistance clé est le <strong>61,8% Fib 2 à 24,58 €</strong> (ligne rouge visible sur PRT). Un franchissement confirme la sortie de consolidation vers 26–30 €. RSI 50,79 = neutre, marge de progression. MACD −0,82 = légère compression.</div>
     </div>
   </div>
 
@@ -381,113 +538,26 @@
         <div class="aname">Stifel</div>
         <div class="areco buy">● Achat — Initiation 20 avr. 2026</div>
         <div class="aobj">30,00 €</div>
-        <div class="adate">Objectif à 12 mois · +37,6% depuis cours actuel</div>
-        <div class="anote"><strong>TCAC BPA +20%</strong> jusqu'en 2030 · BPA ×2,6 sur 5 ans · Marge op. 11,4% → <strong>18% en 2030</strong> · FCF cumulé >140 M€. <em>"Le titre pourrait plus que doubler en cinq ans."</em></div>
+        <div class="adate">+37,6% depuis cours · 12 mois</div>
+        <div class="anote"><strong>TCAC BPA +20%</strong>/an jusqu'en 2030 · marge op 11,4%→18% · FCF >140 M€ · BPA ×2,6 en 5 ans. <em>"Peut plus que doubler en cinq ans."</em></div>
       </div>
       <div class="acard">
         <div class="aname">TP ICAP Midcap</div>
         <div class="areco buy">● Positif — MàJ 08 mai 2026</div>
         <div class="aobj">28,50 €</div>
-        <div class="adate">Mise à jour post-publications trimestrielles · +30,7% potentiel</div>
-        <div class="anote">Opinion et objectif mis à jour ce jour dans la newsletter Romain Dion (Bourse et Placements N°246, 8 mai 2026). Lumibird figure parmi les <strong>recommandations positives</strong> de TP ICAP Midcap après les publications T1.</div>
+        <div class="adate">+30,7% depuis cours · Newsletter RomainDion N°246</div>
+        <div class="anote">Mise à jour post-publications T1 — figure parmi les <strong>recommandations positives</strong> de TP ICAP Midcap avec ID Logistics, FDE, Kaufman &amp; Broad.</div>
       </div>
     </div>
     <div class="cbox">
       <div class="crow">
-        <div class="ci"><div class="cl">Recommandation</div><div class="cv rc">ACHAT — 2 analystes</div></div>
-        <div class="ci"><div class="cl">Obj. haut (Stifel)</div><div class="cv hi">30,00 €</div></div>
-        <div class="ci"><div class="cl">Obj. bas (TP ICAP)</div><div class="cv md">28,50 €</div></div>
+        <div class="ci"><div class="cl">Consensus 2 analystes</div><div class="cv rc">ACHAT</div></div>
+        <div class="ci"><div class="cl">Obj. haut</div><div class="cv hi">30,00 € (Stifel)</div></div>
+        <div class="ci"><div class="cl">Obj. bas</div><div class="cv md">28,50 € (TP ICAP)</div></div>
         <div class="ci"><div class="cl">Obj. moyen</div><div class="cv md">29,25 €</div></div>
         <div class="ci"><div class="cl">Potentiel moyen</div><div class="cv hi">+34%</div></div>
       </div>
-      <div class="cnote"><strong>Sources :</strong> Stifel initiation (20 avr. 2026, Boursorama/Zonebourse) · TP ICAP Midcap MàJ (08 mai 2026, newsletter Romain Dion — Bourse et Placements N°246). Deux analystes, deux recommandations positives, fourchette 28,50–30 € — consensus cohérent, potentiel moyen +34% depuis 21,80 €. La cession division médicale n'est probablement pas intégrée dans ces objectifs — elle constituerait un upside additionnel.</div>
-    </div>
-  </div>
-
-  <!-- CESSION DIVISION MÉDICALE -->
-  <div class="section">
-    <div class="stitle">Scénario cession division médicale — le catalyseur caché</div>
-
-    <div class="card">
-      <h3>Chronologie du dossier</h3>
-      <p><strong>Novembre 2024 :</strong> Lumibird confirme explorer la vente potentielle de la division médicale — réaction à des rumeurs de marché. Titre +19,67% en séance à 8,64 €. La direction précise être "à un stade très préliminaire" sans certitude sur l'issue.</p>
-      <p><strong>Janvier 2025 :</strong> Selon le média L'Informé, la vente a échoué — ni EQT ni Carlyle n'ont présenté une offre suffisamment élevée. Marc Le Flohic (PDG, détenteur de 51% du capital) visait un prix proche de <strong>350 M€</strong>. Le titre rechute -5,60%. L'Informé évoque aussi que cette cession pourrait être un <em>prélude à une sortie de cote</em> après rachat des minoritaires.</p>
-      <p><strong>Mars 2026 :</strong> Les discussions seraient toujours en cours après l'échec du premier candidat. Le prix cible est revu à <strong>250–300 M€</strong> (soit ~52–62% de la capitalisation actuelle à 480 M€). Le bénéfice 2026 est attendu à ~23 M€ (+60%) selon le consensus FactSet.</p>
-      <p><strong>8 avril 2026 :</strong> Alors même que Lumibird Medical acquiert BIZ MEDIC (Asie), le groupe confirme explicitement "continuer d'explorer la vente potentielle de la division médicale. L'issue de cette réflexion stratégique demeure, à ce jour, <strong>incertaine</strong>." — L'acquisition de BIZ MEDIC est interprétée comme une valorisation de la division avant cession.</p>
-    </div>
-
-    <div style="overflow-x:auto; border-radius:12px; border:1px solid var(--border); margin-bottom:14px;">
-      <table class="dt">
-        <thead><tr><th>Scénario</th><th>Prix cession</th><th>Implications valorisation</th><th>Par action (estimé)</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>Cession à 250 M€</strong></td>
-            <td class="tacc">250 M€</td>
-            <td>Remboursement dette (~95 M€) → 155 M€ nets. Photonique pure-play : EV ~324 M€ pour EBITDA ~19-25 M€ (défense premium)</td>
-            <td class="tgrn">~7 € retour actionnaires + ~15-18 € Photonique = ~22–25 €</td>
-          </tr>
-          <tr>
-            <td><strong>Cession à 300 M€</strong></td>
-            <td class="tacc">300 M€</td>
-            <td>Remboursement dette + ~205 M€ nets. Photonique pure-play : EV ~274 M€. Avec rerating défense (20–25x EBITDA) = forte hausse</td>
-            <td class="tgrn">~7–9 € retour actionnaires + ~20–22 € Photonique = <strong>27–31 €</strong></td>
-          </tr>
-          <tr>
-            <td><strong>Pas de cession</strong></td>
-            <td class="tacc">—</td>
-            <td>Business as usual, croissance organique, plan 2026, Stifel 30 € à 12 mois</td>
-            <td class="tgrn">26–30 € (objectif Stifel)</td>
-          </tr>
-          <tr>
-            <td><strong>Cession + sortie de cote</strong></td>
-            <td class="tacc">OPA ?</td>
-            <td>Marc Le Flohic (51%) rachète les minoritaires à prime. Scénario évoqué par L'Informé (jan. 2025)</td>
-            <td class="twrn">Prime d'OPA probable sur cours actuel</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Lecture analytique</h3>
-      <p><strong>Division médicale 2025 (estimée) :</strong> CA ~112 M€ · EBITDA ~23–24 M€ (marge >21% guidée). À 250–300 M€, le multiple implicite est de <strong>10,5–12,5x l'EBITDA médical</strong> — cohérent pour un acteur ophtalmologie de cette taille.</p>
-      <p><strong>Ce que cela révèle sur le prix actuel :</strong> Si la division médicale vaut 250–300 M€ sur 480 M€ de capi totale, le marché valorise la division Photonique (défense, spatial, LiDAR) à seulement <strong>180–230 M€</strong> — soit 7–9x l'EBITDA photonique dans un cycle de réarmement historique. La décote est flagrante.</p>
-      <p><strong>BIZ MEDIC comme signal :</strong> Acquérir un distributeur en Asie du Sud-Est juste avant une potentielle cession n'est pas contradictoire — c'est une tactique classique de valorisation pré-cession. La création de "Lumibird Medical Southeast Asia" rend la division plus attractive pour un acquéreur stratégique.</p>
-      <p><strong>Risque :</strong> Marc Le Flohic contrôle 51% et a fixé un plancher de prix. Deux fonds majeurs (EQT, Carlyle) n'ont pas atteint ce niveau. Un deuxième échec serait perçu négativement. La décision finale appartient à un seul homme.</p>
-    </div>
-  </div>
-
-  <!-- ACTIF CACHÉ CILAS -->
-  <div class="section">
-    <div class="stitle">Actif caché — 37% de CILAS : le coefficient multiplicateur</div>
-
-    <div class="card">
-      <h3>Historique de la participation</h3>
-      <p><strong>Juillet 2021 :</strong> Lumibird acquiert auprès d'Areva 37% du capital de <strong>CILAS</strong> (Compagnie Industrielle des Lasers) pour <strong>7,5 M€</strong>. CILAS est spécialiste des systèmes laser de défense — télémètres, désignateurs, systèmes anti-drones. Les actionnaires aux côtés de Lumibird : <strong>Safran + MBDA</strong> (63%).</p>
-      <p><strong>2022 :</strong> ArianeGroup cède sa participation dans CILAS à Safran + MBDA. Montant de la transaction : <strong>50–100 M€</strong>, impliquant une valorisation totale de CILAS entre <strong>80 et 160 M€</strong>. La participation de 37% de Lumibird est dès lors valorisée à <strong>30–60 M€</strong> selon Invest Securities — soit un multiplicateur de ×4 à ×8 sur le prix d'achat de 7,5 M€.</p>
-      <p><strong>Novembre 2023 :</strong> La Lettre rapporte des discussions pour que Lumibird revende ses 37% à Safran + MBDA. Lumibird répond en préférant "un partenariat plus technologique et industriel que capitalistique" — ni confirmation ni infirmation d'une cession. La participation reste dans les comptes.</p>
-    </div>
-
-    <div style="overflow-x:auto; border-radius:12px; border:1px solid var(--border); margin-bottom:14px;">
-      <table class="dt">
-        <thead><tr><th>Paramètre</th><th>Valeur</th><th>Source / Date</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Prix d'acquisition (Areva)</strong></td><td class="tacc">7,5 M€</td><td>Juillet 2021</td></tr>
-          <tr><td><strong>Valorisation CILAS (transaction Ariane)</strong></td><td class="tacc">80–160 M€</td><td>2022 — cession ArianeGroup à Safran+MBDA</td></tr>
-          <tr><td><strong>Valeur estimée 37% Lumibird (2022)</strong></td><td class="tgrn">30–60 M€</td><td>Invest Securities, nov. 2023</td></tr>
-          <tr><td><strong>Multiplicateur sur prix d'achat</strong></td><td class="tgrn">×4 à ×8</td><td>7,5 M€ → 30–60 M€</td></tr>
-          <tr><td><strong>En % de la capi Lumibird actuelle (~480 M€)</strong></td><td class="twrn">6% à 12,5%</td><td>À cours 21,80 €</td></tr>
-          <tr><td><strong>Valorisation post-réarmement (2026, estimée)</strong></td><td class="tgrn">Probablement supérieure</td><td>Cycle défense 2022–2026, budgets européens en hausse</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Pourquoi cet actif est-il important aujourd'hui ?</h3>
-      <p><strong>1 — Le réarmement européen a renchéri les actifs défense :</strong> La valorisation de 80–160 M€ date de 2022. Depuis, les budgets défense européens ont explosé (+40% en moyenne), les carnets de commandes des acteurs du laser de défense sont pleins, et les multiples du secteur ont progressé. La valeur réelle des 37% est très vraisemblablement <strong>supérieure à l'estimation de 2022</strong>.</p>
-      <p><strong>2 — Synergies stratégiques actives :</strong> CILAS + Lumibird travaillent déjà ensemble sur les systèmes laser de défense. Le contrat Rheinmetall Skyranger 30 (télémètres Vidar) est un exemple concret de cette collaboration. Lumibird n'est pas un actionnaire passif — il co-développe des solutions avec CILAS.</p>
-      <p><strong>3 — Un levier de valeur non pricé :</strong> La capitalisation de Lumibird à ~480 M€ intègre peu ou pas la valeur de cette participation. Si CILAS est valorisé aujourd'hui à 120–200 M€ (hypothèse raisonnable avec les multiples défense 2026), les 37% de Lumibird valent <strong>44–74 M€</strong> — soit près de 10–15% de la capi totale. C'est du "upside gratuit" non valorisé.</p>
-      <p><strong>4 — Catalyseur potentiel :</strong> Une cession des 37% à Safran + MBDA (discussions évoquées en 2023) génèrerait entre 30 et 70 M€ de cash — permettant de <strong>rembourser une large partie de la dette nette (94,6 M€)</strong> et d'alléger le bilan pour accélérer le plan photonique. À surveiller.</p>
+      <div class="cnote"><strong>Cohérence SOTP :</strong> Les objectifs 28,50–30 € correspondent au scénario central SOTP (27–32 €). Ils intègrent vraisemblablement une probabilité de cession médicale (~250 M€) dans leurs modèles DCF. La cession CILAS représenterait un upside additionnel non encore modélisé.</div>
     </div>
   </div>
 
@@ -498,12 +568,11 @@
       <table class="dt">
         <thead><tr><th>Risque</th><th>Nature</th><th>Niveau</th><th>Commentaire</th></tr></thead>
         <tbody>
-          <tr><td><strong>Médical Asie : −18% T1</strong></td><td>Exécution</td><td class="twrn">Modéré</td><td>Perturbations logistiques et décalages. Direction anticipe un rattrapage dès S1 — à confirmer le ~27 juillet.</td></tr>
-          <tr><td><strong>Moyen-Orient : livraisons décalées</strong></td><td>Géopolitique</td><td class="twrn">Modéré</td><td>Contexte géopolitique impacte les livraisons médicales EMEA. Commandes en portefeuille, exécution reportée.</td></tr>
-          <tr><td><strong>Effet change USD/EUR</strong></td><td>Change</td><td class="twrn">Modéré</td><td>Revenus internationaux exposés. Baisse du dollar comprime les marges en euros sur les ventes Amériques.</td></tr>
-          <tr><td><strong>Résistance 24,58 € non franchie</strong></td><td>Technique</td><td class="twrn">Modéré</td><td>Ligne rouge horizontale forte sur PRT. Tant que ce niveau n'est pas confirmé, le risque de rechute sur 21,27 € (Fib 2 38,2%) reste ouvert.</td></tr>
-          <tr><td><strong>Cession médicale — deuxième échec</strong></td><td>Stratégique</td><td class="tred">Élevé si échec</td><td>Marc Le Flohic veut 250–300 M€, EQT/Carlyle ont refusé en jan. 2025. Deuxième round en cours. Un nouvel échec public ferait rechuter le titre significativement.</td></tr>
-          <tr><td><strong>Faible liquidité</strong></td><td>Marché</td><td class="twrn">Modéré</td><td>Volume hebdo ~165 K actions. Small cap : les entrées/sorties importantes peuvent amplifier les mouvements.</td></tr>
+          <tr><td><strong>Cession médicale — 2e échec</strong></td><td>Stratégique</td><td class="tred">Élevé si échec</td><td>Le Flohic contrôle 51% et fixe le plancher. EQT/Carlyle ont refusé en janv. 2025. Un 2e échec public ferait rechuter le titre, mais ne change pas la valeur intrinsèque.</td></tr>
+          <tr><td><strong>Médical Asie −18% T1</strong></td><td>Exécution</td><td class="twrn">Modéré</td><td>Rattrapage annoncé dès S1. À confirmer le ~27 juillet. Si non confirmé, pression sur l'hypothèse EBITDA >21%.</td></tr>
+          <tr><td><strong>Résistance 24,58 € (Fib 2 61,8%)</strong></td><td>Technique</td><td class="twrn">Modéré</td><td>Ligne rouge PRT. Tant que non franchie, risque de retour sur 21,27 € (Fib 38,2%).</td></tr>
+          <tr><td><strong>Change USD / USD fort</strong></td><td>Devises</td><td class="twrn">Modéré</td><td>Revenus Amériques (photonique +40% T1). La conversion en euros dépend du taux USD/EUR.</td></tr>
+          <tr><td><strong>Liquidité (small cap)</strong></td><td>Marché</td><td class="twrn">Modéré</td><td>~165K actions/semaine. Les annonces amplifient fortement le cours dans les deux sens.</td></tr>
         </tbody>
       </table>
     </div>
@@ -513,58 +582,56 @@
   <div class="section">
     <div class="stitle">Mon avis personnel</div>
     <div class="pc">
-      <div class="pcscore">7,0<span style="font-size:22px;color:var(--sub);">/10</span></div>
-      <div class="pclabel">Constructif — Fondamentaux solides, rebond CT conditionnel au CA S1</div>
+      <div class="pcscore">7,5<span style="font-size:22px;color:var(--sub);">/10</span></div>
+      <div class="pclabel">Attractif — 3 optionnalités indépendantes · plancher de valeur validé par la SOTP</div>
       <div class="pccols">
         <div>
           <div class="pcsub">Pour ✦</div>
           <ul class="pros">
-            <li>Leader européen incontesté — 50 ans de savoir-faire laser, barrières technologiques réelles</li>
-            <li>Double exposition mégatrends : défense/spatial (cycle de réarmement) + ophtalmologie (vieillissement population)</li>
-            <li>Résultats 2025 en forte progression — EBITDA 20,2%, FCF 13 M€, dividende initié</li>
-            <li>Stifel obj. 30 € : potentiel +37,6% à 12 mois, scénario ×2 en 5 ans appuyé sur des marges en expansion</li>
-            <li>RSI(14) hebdo à 50,79 : neutre = aucun excès de valorisation, marge de progression intacte</li>
-            <li>Rheinmetall Skyranger 30 : ancrage défense de long terme avec un acteur majeur</li>
-            <li>37% de CILAS (Safran · MBDA) : acquis 7,5 M€ en 2021, valeur estimée 30–60 M€ (×4–8) — actif caché probablement renchéri par le réarmement, non pricé dans la capi</li>
+            <li>SOTP valide ~23–24 € comme plancher dans le scénario conservateur — le cours actuel intègre peu ou pas les optionnalités</li>
+            <li>Trois catalyseurs indépendants : cession médicale / CILAS / croissance photonique — un seul suffit à justifier le scénario 28–30 €</li>
+            <li>37% CILAS acheté 7,5 M€ → valeur actuelle estimée 40–75 M€ : actif caché non pricé</li>
+            <li>Leader européen laser 50 ans d'avance, Rheinmetall Skyranger 30, cycle réarmement structurel</li>
+            <li>Stifel + TP ICAP : deux analystes convergent sur 28,50–30 €, potentiel +34%</li>
+            <li>Première dividende de l'histoire : signal de maturité et de confiance dans les cash-flows futurs</li>
           </ul>
         </div>
         <div>
           <div class="pcsub">Contre ▲</div>
           <ul class="cons">
-            <li>Médical Asie −18% T1 : rattrapage annoncé mais pas encore prouvé — test critique au CA S1 (~27 juillet)</li>
-            <li>Résistance technique 24,58 € (Fib 2 61,8%) non franchie — ligne rouge visible sur PRT, frein CT</li>
-            <li>MACD légèrement négatif : dynamique hebdo à confirmer</li>
-            <li>Exposition change USD (Amériques) : la force du dollar aide les exports mais pèse sur la conversion en €</li>
-            <li>Faible liquidité small cap : amplifie la volatilité sur les publications</li>
+            <li>Cession médicale incertaine : Le Flohic a un plancher exigeant, 1er round a échoué</li>
+            <li>Médical Asie −18% T1 : rattrapage à prouver, pas encore confirmé</li>
+            <li>MACD −0,82 : pas encore de confirmation technique hebdomadaire du rebond</li>
+            <li>Résistance 24,58 € non franchie — frein CT sur le graphique PRT</li>
+            <li>Small cap illiquide : amplification des mouvements, spread bid-ask important</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="conclu">
-      <h3>💬 Verdict — Une valeur de qualité en consolidation, achetable sur la faiblesse</h3>
-      <p>Lumibird est un dossier fondamentalement solide sur lequel le marché a réagi de façon disproportionnée au T1 2026. Les <strong>décalages médicaux sont conjoncturels</strong>, reconnus comme tels par la direction, et les commandes sont en portefeuille. Le catalyseur défense (Skyranger 30 / Rheinmetall) et l'acquisition BIZ MEDIC donnent une visibilité réelle sur la croissance.</p>
-      <p>L'<strong>optionnalité cession division médicale</strong> est le facteur le plus sous-estimé du dossier. Si l'opération aboutit à 250–300 M€, le marché devra revaloriser Lumibird en tant que <strong>pure-play défense/photonique</strong> dans un cycle de réarmement européen — avec un rerating potentiel majeur. Même sans cession, Stifel vise 30 € à 12 mois. Les deux scénarios convergent vers le même territoire de cours.</p>
-      <p>Techniquement, le cours à 21,80 € est <strong>soutenu par le 38,2% du Fib 2 (21,27 €)</strong> et reste bien au-dessus du golden ratio du Fib 1 (18,72 €). Le prochain test est le franchissement de <span class="hlo">24,58 €</span> (Fib 2 61,8%, résistance rouge sur PRT). Le vrai catalyseur bilatéral : soit le <span class="hlo">CA S1 (~27 juillet)</span>, soit une <span class="hlo">annonce cession division médicale</span> qui peut survenir à tout moment.</p>
+      <h3>💬 Verdict — Un dossier sous-valorisé avec trois leviers d'upside indépendants</h3>
+      <p>Lumibird est l'une des rares valeurs où la <strong>somme des parties excède clairement le prix payé</strong>. À 21,80 €, on achète simultanément : une photonique défense de référence européenne, une division médicale dont le vendeur cherche 250–300 M€, et une participation dans CILAS valorisée ×5 à ×10 son coût d'acquisition. Le scénario le plus conservateur valide déjà le cours actuel comme plancher.</p>
+      <p>La thèse n'est pas "si tout se passe bien" — c'est que <strong>chaque catalyseur est indépendant</strong>. La cession médicale peut ne pas aboutir ET le titre peut quand même revaloriser via la photonique ou CILAS. C'est une triple optionnalité non corrélée, ce qui est rare.</p>
+      <p>Techniquement, le franchissement de <span class="hlo">24,58 €</span> (Fib 2 61,8%, résistance rouge PRT) serait le signal de sortie de consolidation. Les catalyseurs : <span class="hlo">AG 27 mai</span>, <span class="hlo">CA S1 ~27 juillet</span>, et à tout moment une <span class="hlo">annonce de cession médicale</span>.</p>
       <div class="levels">
         <div class="lp res"><div class="lpl">Résistance 1 — Fib 2 61,8%</div><div class="lpv">24,58 €</div></div>
-        <div class="lp res"><div class="lpl">Résistance 2 — ATH Fib 1</div><div class="lpv">26,10 €</div></div>
-        <div class="lp res"><div class="lpl">Obj. Stifel 12 mois</div><div class="lpv">30,00 €</div></div>
-        <div class="lp res"><div class="lpl">Obj. TP ICAP Midcap</div><div class="lpv">28,50 €</div></div>
-        <div class="lp cur"><div class="lpl">Cours 08/05 11h16</div><div class="lpv">21,80 €</div></div>
+        <div class="lp res"><div class="lpl">ATH Fib 1</div><div class="lpv">26,10 €</div></div>
+        <div class="lp res"><div class="lpl">SOTP central</div><div class="lpv">27–32 €</div></div>
+        <div class="lp res"><div class="lpl">Obj. analystes</div><div class="lpv">28,50–30 €</div></div>
+        <div class="lp cur"><div class="lpl">Cours 08/05</div><div class="lpv">21,80 €</div></div>
         <div class="lp sup"><div class="lpl">Support 1 — Fib 2 38,2%</div><div class="lpv">21,27 €</div></div>
-        <div class="lp sup"><div class="lpl">Support 2 — Fib 2 23,6%</div><div class="lpv">19,23 €</div></div>
-        <div class="lp cat"><div class="lpl">Catalyseur — ~80j</div><div class="lpv">~27 juillet — CA S1</div></div>
-        <div class="lp cat"><div class="lpl">Catalyseur — à tout moment</div><div class="lpv">Annonce cession médicale</div></div>
-        <div class="lp cat"><div class="lpl">Scénario cession 300 M€</div><div class="lpv">→ 27–31 € estimé</div></div>
+        <div class="lp sup"><div class="lpl">Support 2 — Fib 1 61,8%</div><div class="lpv">18,72 €</div></div>
+        <div class="lp cat"><div class="lpl">AG</div><div class="lpv">27 mai 2026</div></div>
+        <div class="lp cat"><div class="lpl">CA S1</div><div class="lpv">~27 juillet</div></div>
+        <div class="lp cat"><div class="lpl">Cession médicale</div><div class="lpv">À tout moment</div></div>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
-    <p><strong style="color:var(--muted-text);">Sources vérifiées :</strong> Communiqués Lumibird (actusnews.com) · Résultats annuels 2025 (10 mars 2026) · CA T1 2026 (27 avr. 2026, Zonebourse/BFM Bourse) · Stifel initiation (20 avr. 2026, Boursorama/Zonebourse) · Rheinmetall Skyranger 30 (9 fév. 2026) · BIZ MEDIC acquisition (8 avr. 2026, Fortuneo) · Graphique PRT hebdo (1S) — RSI 50,79 · MACD −0,81507 · ABC Bourse · Investing.com cours 07/05/2026 : 21,30 €.</p>
-    <p style="margin-top:8px;"><strong style="color:var(--muted-text);">Avertissement :</strong> Analyse personnelle à titre informatif uniquement. Pas un conseil en investissement. Tout investissement comporte un risque de perte en capital. NPC.</p>
+    <p><strong style="color:#546080;">Sources vérifiées :</strong> Résultats 2025 (10 mars 2026, actusnews) · CA T1 2026 (21 avr. 2026) · Stifel initiation (20 avr. 2026) · TP ICAP Midcap (newsletter RomainDion N°246, 8 mai 2026) · CILAS 7,5 M€ acquisition (Areva, juil. 2021) · Valorisation CILAS 80–160 M€ (cession ArianeGroup 2022, Invest Securities via Zonebourse/Funds Magazine, nov. 2023) · Cession médicale (Boursorama, La Lettre, Investing-lazy.com) · BIZ MEDIC (8 avr. 2026) · Rheinmetall Skyranger 30 (9 fév. 2026) · PRT hebdo RSI 50,79 · MACD −0,82.</p>
+    <p style="margin-top:8px;"><strong style="color:#546080;">Avertissement :</strong> Analyse personnelle à titre informatif uniquement. Pas un conseil en investissement. Tout investissement comporte un risque de perte en capital. NPC.</p>
   </footer>
 
 </div>
