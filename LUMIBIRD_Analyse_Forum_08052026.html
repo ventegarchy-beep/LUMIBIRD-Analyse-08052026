@@ -27,7 +27,7 @@
   }
   * { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--bg); color:var(--text); overflow-x:hidden; font-family:'Exo 2',sans-serif; font-size:14px; line-height:1.6; padding:48px 0 80px; }
-  .wrap { max-width:860px; margin:0 auto; padding:0 24px; }
+  .wrap { max-width:860px; width:100%; margin:0 auto; padding:0 24px; box-sizing:border-box; overflow:hidden; }
   hr.div { border:none; border-top:1px solid var(--border); margin:20px 0; }
 
   /* HEADER */
@@ -77,7 +77,7 @@
 
   /* KPI */
   .kg { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:12px; }
-  .kpi { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .kpi { min-width:0; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
   .kpi.ac { border-color:rgba(34,211,238,.35); background:rgba(34,211,238,.05); }
   .kl { font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
   .kv { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:700; color:var(--heading); }
@@ -87,7 +87,7 @@
   .ks { font-size:11px; color:var(--muted); margin-top:2px; }
 
   /* ══════════ SOTP SECTION ══════════ */
-  .sotp-header {
+  .sotp-header { overflow:hidden;
     background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 14px 14px 0 0;
@@ -98,7 +98,7 @@
   .sotp-header p { font-size:13px; color:var(--muted); }
   .sotp-header p strong { color:var(--text); }
 
-  .sotp-grid {
+  .sotp-grid { width:100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
@@ -107,9 +107,9 @@
     border-radius: 0 0 14px 14px;
     overflow: hidden;
   }
-  @media(max-width:700px) { .sotp-grid { grid-template-columns:1fr; } }
+  @media(max-width:700px) { .sotp-grid { width:100%; grid-template-columns:1fr; } }
 
-  .sotp-card {
+  .sotp-card { min-width:0; word-break:break-word; overflow-wrap:break-word;
     padding: 20px 22px;
     border-right: 1px solid var(--border);
     position: relative;
@@ -162,7 +162,7 @@
   .sotp-total .st-item .stv.conserv { color:var(--gold); }
   .sotp-total .st-item .stv.central { color:var(--accent); }
   .sotp-total .st-item .stv.optimiste { color:var(--green); }
-  .sotp-note { font-size:11.5px; color:var(--muted); line-height:1.6; border-top:1px solid var(--border); margin-top:14px; padding-top:12px; }
+  .sotp-note { overflow-wrap:break-word; word-break:break-word; font-size:11.5px; color:var(--muted); line-height:1.6; border-top:1px solid var(--border); margin-top:14px; padding-top:12px; }
   .sotp-note strong { color:var(--text); }
 
   /* CARD */
@@ -202,7 +202,7 @@
   .tldesc strong { color:var(--text); }
 
   /* FIBONACCI */
-  .fibwrap { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 22px 18px; }
+  .fibwrap { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:22px 22px 18px; overflow:hidden; }
   .fibhdr { display:flex; justify-content:space-between; font-size:10.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
   .frow { display:grid; grid-template-columns:130px 1fr 110px; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid rgba(19,26,48,.5); }
   .frow:last-child { border-bottom:none; }
@@ -438,19 +438,19 @@
       </div>
     </div>
 
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-top:14px;">
-      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px;">
-        <div style="flex:1;min-width:180px;">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-top:14px;overflow:hidden;width:100%;box-sizing:border-box;">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px;width:100%;">
+        <div style="flex:1;min-width:160px;max-width:100%;">
           <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario conservateur</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--gold);">25–27 €/action</div>
           <div style="font-size:11px;color:var(--muted);">Photon 420 + Médical 250 + CILAS 55 − dette 94</div>
         </div>
-        <div style="flex:1;min-width:180px;">
+        <div style="flex:1;min-width:160px;max-width:100%;">
           <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario central</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);">29–35 €/action</div>
           <div style="font-size:11px;color:var(--muted);">Photon 560 + Médical 275 + CILAS 80 − dette 94</div>
         </div>
-        <div style="flex:1;min-width:180px;">
+        <div style="flex:1;min-width:160px;max-width:100%;">
           <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario optimiste</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--green);">37–45 €/action</div>
           <div style="font-size:11px;color:var(--muted);">Photon 700 + Médical 300 + CILAS 110 − dette 94</div>
