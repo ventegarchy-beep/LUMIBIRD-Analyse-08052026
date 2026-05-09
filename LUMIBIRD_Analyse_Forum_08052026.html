@@ -26,7 +26,7 @@
     --muted:    #8892b8;
   }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--text); font-family:'Exo 2',sans-serif; font-size:14px; line-height:1.6; padding:48px 0 80px; }
+  body { background:var(--bg); color:var(--text); overflow-x:hidden; font-family:'Exo 2',sans-serif; font-size:14px; line-height:1.6; padding:48px 0 80px; }
   .wrap { max-width:860px; margin:0 auto; padding:0 24px; }
   hr.div { border:none; border-top:1px solid var(--border); margin:20px 0; }
 
@@ -107,7 +107,7 @@
     border-radius: 0 0 14px 14px;
     overflow: hidden;
   }
-  @media(max-width:600px) { .sotp-grid { grid-template-columns:1fr; } }
+  @media(max-width:700px) { .sotp-grid { grid-template-columns:1fr; } }
 
   .sotp-card {
     padding: 20px 22px;
@@ -143,7 +143,7 @@
   .sotp-card.medical .sotp-range { color:var(--green); }
   .sotp-card.cilas .sotp-range { color:var(--gold); }
   .sotp-sub { font-size:11px; color:var(--muted); margin-bottom:12px; }
-  .sotp-detail { font-size:12px; color:var(--muted); line-height:1.6; }
+  .sotp-detail { font-size:12px; color:var(--muted); line-height:1.6; word-break:break-word; overflow-wrap:break-word; }
   .sotp-detail strong { color:var(--text); }
 
   .sotp-total {
@@ -273,7 +273,7 @@
   .conclu p strong { color:var(--text); }
   .hlo { background:rgba(34,211,238,.15); color:var(--accent); padding:0 5px; border-radius:4px; font-weight:600; }
   .levels { display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
-  .lp { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 14px; }
+  .lp { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 14px; max-width:100%; word-break:break-word; }
   .lpl { color:var(--muted); font-size:10px; text-transform:uppercase; font-weight:700; letter-spacing:.06em; margin-bottom:3px; }
   .lpv { font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px; }
   .lp.res .lpv { color:var(--red); } .lp.sup .lpv { color:var(--green); }
@@ -283,6 +283,8 @@
   footer p { font-size:11px; color:#546080; line-height:1.7; }
 
   @media(max-width:600px) {
+    .sotp-total { grid-template-columns:repeat(2,1fr); }
+    .cbox-row { flex-direction:column; gap:10px; }
     .kg { grid-template-columns:repeat(2,1fr); }
     .frow { grid-template-columns:100px 1fr 80px; }
     .cours-v { font-size:34px; }
@@ -437,18 +439,18 @@
     </div>
 
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-top:14px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:14px;">
-        <div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px;">
+        <div style="flex:1;min-width:180px;">
           <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario conservateur</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--gold);">25–27 €/action</div>
           <div style="font-size:11px;color:var(--muted);">Photon 420 + Médical 250 + CILAS 55 − dette 94</div>
         </div>
-        <div>
+        <div style="flex:1;min-width:180px;">
           <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario central</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);">29–35 €/action</div>
           <div style="font-size:11px;color:var(--muted);">Photon 560 + Médical 275 + CILAS 80 − dette 94</div>
         </div>
-        <div>
+        <div style="flex:1;min-width:180px;">
           <div style="font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">Scénario optimiste</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--green);">37–45 €/action</div>
           <div style="font-size:11px;color:var(--muted);">Photon 700 + Médical 300 + CILAS 110 − dette 94</div>
